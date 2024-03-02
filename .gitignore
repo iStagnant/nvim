@@ -1,7 +1,2 @@
-tags
-test.sh
-.luarc.json
-nvim
-
-spell/
+shortcuts.vim
 lazy-lock.json
