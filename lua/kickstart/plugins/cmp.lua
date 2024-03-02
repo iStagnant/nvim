@@ -28,13 +28,33 @@ return {
       --    you can use this plugin to help you. It even has snippets
       --    for various frameworks/libraries/etc. but you will have to
       --    set up the ones that are useful for you.
-      -- 'rafamadriz/friendly-snippets',
+      'rafamadriz/friendly-snippets',
     },
     config = function()
       -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
-      luasnip.config.setup {}
+      luasnip.config.setup {
+        enable_autosnippets = true,
+        ext_opts = {
+          [require('luasnip.util.types').choiceNode] = {
+            active = {
+              virt_text = { { " « ", "NonTest" } },
+            }
+          }
+        }
+      }
+
+      -- Rotate change node
+      vim.keymap.set("i", "<C-c>", function()
+        if luasnip.choice_active() then
+          luasnip.change_choice(1)
+        end
+      end)
+
+      -- Load snippets for luasnip
+      require('luasnip.loaders.from_vscode').lazy_load()
+      require('luasnip.loaders.from_lua').lazy_load { paths = { "./snippets" } }
 
       cmp.setup {
         snippet = {
@@ -53,6 +73,8 @@ return {
           ['<C-n>'] = cmp.mapping.select_next_item(),
           -- Select the [p]revious item
           ['<C-p>'] = cmp.mapping.select_prev_item(),
+          -- Close the completion window
+          ['<C-j>'] = cmp.mapping.close(),
 
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.

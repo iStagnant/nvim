@@ -12,7 +12,7 @@ return {
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      { -- If encountering errors, see telescope-fzf-native README for install instructions
+      {
         'nvim-telescope/telescope-fzf-native.nvim',
 
         -- `build` is used to run some command when the plugin is installed/updated.
@@ -30,7 +30,7 @@ return {
       -- Useful for getting pretty icons, but requires special font.
       --  If you already have a Nerd Font, or terminal set up with fallback fonts
       --  you can enable this
-      -- { 'nvim-tree/nvim-web-devicons' }
+      { 'nvim-tree/nvim-web-devicons' }
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -57,13 +57,6 @@ return {
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
-        --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
-        -- pickers = {}
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
