@@ -39,14 +39,14 @@ return {
         ext_opts = {
           [require('luasnip.util.types').choiceNode] = {
             active = {
-              virt_text = { { " « ", "NonTest" } },
-            }
-          }
-        }
+              virt_text = { { ' « ', 'NonTest' } },
+            },
+          },
+        },
       }
 
       -- Rotate change node
-      vim.keymap.set("i", "<C-c>", function()
+      vim.keymap.set('i', '<C-c>', function()
         if luasnip.choice_active() then
           luasnip.change_choice(1)
         end
@@ -54,7 +54,7 @@ return {
 
       -- Load snippets for luasnip
       require('luasnip.loaders.from_vscode').lazy_load()
-      require('luasnip.loaders.from_lua').lazy_load { paths = { "./snippets" } }
+      require('luasnip.loaders.from_lua').lazy_load { paths = { './snippets' } }
 
       cmp.setup {
         snippet = {
