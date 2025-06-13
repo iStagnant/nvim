@@ -67,7 +67,7 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
 -- Allow selection of empty cells in visual block mode
-vim.opt.virtualedit = "block"
+vim.opt.virtualedit = 'block'
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
